@@ -1,13 +1,15 @@
 <template>
 <div id="app">
-	<h1>MWO</h1>
+	<h1>Welcome to signing system</h1>
 	<div v-if="logged==false">
 		<p>Email:</p>
 		<input type="email" v-model="email">
 		<p>Password:</p>
 		<input type="password" v-model="password">
 		<br></br>
-		<button @click="logged=true">Zaloguj</button>
+		<div v-if="email.length > 0 && password.length > 0 && validEmail(email)">
+			<button @click="logged=true">Zaloguj</button>
+		</div>	
 	</div>
 	<div v-else>
 		<p>Witaj {{email}}</p>
@@ -37,7 +39,11 @@ export default {
 				  this.email = '',
 				  this.password = '',
 				  this.logged = false
-			  }
+			  },
+			  validEmail: function (email) {
+			      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			      return re.test(email);
+			    }
 			}
 }
 </script>
