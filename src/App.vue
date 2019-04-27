@@ -7,8 +7,8 @@
 		<p>Password:</p>
 		<input type="password" v-model="password">
 		<br></br>
-		<div v-if="email.length > 0 && password.length > 0 && validEmail(email)">
-			<button @click="logged=true">Zaloguj</button>
+		<div v-if="email.length > 0 && password.length > 0">
+			<button @click="checkEmailAndLogIn(email)">Zaloguj</button>
 		</div>	
 	</div>
 	<div v-else>
@@ -43,6 +43,15 @@ export default {
 			  validEmail: function (email) {
 			      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			      return re.test(email);
+			    },
+			    checkEmailAndLogIn(email){
+			    	if(this.validEmail(email)){
+			    		this.logged = true;
+			    	}
+			    	else{
+			    		alert(this.email + " is wrong email!" )
+			    		return false;
+			    	}
 			    }
 			}
 }
