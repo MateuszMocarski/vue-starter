@@ -8,20 +8,20 @@
 		<input type="password" v-model="password">
 		<br></br>
 		<div v-if="email.length > 0 && password.length > 0">
-			<button @click="checkEmailAndLogIn(email)">Zaloguj</button>
+			<button @click="checkEmailAndLogIn(email)">Log in</button>
 		</div>	
 	</div>
 	<div v-else>
-		<p>Witaj {{email}}</p>
+		<p>Hello {{email}}</p>
 		<br></br>
-		<button @click="logout()">Wyloguj</button>
+		<button @click="logout()">Log out</button>
 	</div>
 	
 </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import "milligram";
 
 export default {
 	data() {
