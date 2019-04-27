@@ -1,14 +1,25 @@
 <template>
-<div>
-<login-form @login="logMeIn($event)"></login-form>
+<div id="app">
+<div v-if="!logged"><login-form @login="checkEmailAndLogIn($event)" :button-label="'Log in'"></login-form></div>
+
+	
 </div>
 </template>
-<script>
-import LoginForm from "./LoginForm";
-export default{
-	components: {LoginForm}
-}
 
+<script>
+import "milligram";
+import LoginForm from "./LoginForm";
+
+export default {
+	data() {
+		  return {
+		    email: '',
+		    password: '',
+		    logged: false
+		    };
+		},
+	components: {LoginForm},
+}
 </script>
 
 <style>
